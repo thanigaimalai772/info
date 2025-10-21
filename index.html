@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthikeyan's Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'heading': ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Apply the custom fonts */
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Poppins', sans-serif; }
+
+        /* Scroll-reveal animation */
+        .fade-in-element { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in-element.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* Staggered child animation */
+        .stagger-child { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+        .is-visible .stagger-child { opacity: 1; transform: translateY(0); }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111827; }
+        ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0284c7; }
+
+        /* Skills Fan: Initial (unhovered) state */
+        #skills-desktop-container { grid-template-columns: repeat(8, 0); gap: 0; transition: all 0.5s ease-in-out; }
+
+        /* Hide scrollbar for mobile skill/project containers */
+        #skills-mobile-container::-webkit-scrollbar,
+        #projects-mobile-container::-webkit-scrollbar { display: none; }
+        #skills-mobile-container,
+        #projects-mobile-container { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+    <header class='sticky top-0 z-50 flex justify-between items-center px-5 py-4 bg-gray-900 bg-opacity-90 backdrop-blur-sm shadow-lg'>
+        <a href="#" class='text-2xl font-bold text-white font-heading'>Karthikeyan</a>
+        
+        <nav class='hidden md:block'>
+            <ul class='flex items-center space-x-6'>
+                <li><a href="#home" class='hover:text-sky-400 transition-colors duration-300'>Home</a></li>
+                <li><a href="#about" class='hover:text-sky-400 transition-colors duration-300'>About</a></li>
+                <li><a href="#skills" class='hover:text-sky-400 transition-colors duration-300'>Skills</a></li>
+                <li><a href="#project" class='hover:text-sky-400 transition-colors duration-300'>Projects</a></li>
+                <li><a href="#resume" class='hover:text-sky-400 transition-colors duration-300'>Resume</a></li>
+                <li><a href="#contact" class='bg-sky-500 px-4 py-2 rounded-md font-medium text-white hover:bg-sky-600 transition-all duration-300 transform hover:scale-105'>Contact</a></li>
+            </ul>
+        </nav>
+        
+        <button id="mobile-menu-button" class='block md:hidden z-50'>
+            <i id="menu-icon" data-lucide="menu" class="text-white h-6 w-6 transition-all duration-300"></i>
+            <i id="close-icon" data-lucide="x" class="text-white h-6 w-6 hidden transition-all duration-300"></i>
+        </button>
+    </header>
+
+    <nav id="mobile-menu" 
+         class='block md:hidden fixed top-0 left-0 w-3/4 h-full bg-gray-800 z-40
+                transform -translate-x-full transition-transform duration-300 ease-in-out'>
+        <ul class='flex flex-col text-white p-8 pt-20 space-y-4'>
+            <li><a href="#home" class='mobile-link text-xl p-2 block hover:bg-gray-700 rounded-md font-heading'>Home</a></li>
+            <li><a href="#about" class='mobile-link text-xl p-2 block hover:bg-gray-700 rounded-md font-heading'>About</a></li>
+            <li><a href="#skills" class='mobile-link text-xl p-2 block hover:bg-gray-700 rounded-md font-heading'>Skills</a></li>
+            <li><a href="#project" class='mobile-link text-xl p-2 block hover:bg-gray-700 rounded-md font-heading'>Projects</a></li>
+            <li><a href="#resume" class='mobile-link text-xl p-2 block hover:bg-gray-700 rounded-md font-heading'>Resume</a></li>
+            <li><a href="#contact" class='mobile-link text-xl p-2 block hover:bg-gray-700 rounded-md font-heading'>Contacts</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home" class='flex md:flex-row flex-col min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white md:justify-center items-center justify-around py-32 px-4'>
+            <div class='md:w-1/2 text-center md:text-left mb-10 md:mb-0'>
+                <h1 class='text-4xl sm:text-5xl md:text-7xl font-bold font-heading'>Hi ,<br />I'm Karthikeyan T</h1>
+                <p class='text-2xl md:text-3xl text-sky-400 mt-4 font-heading'>Full-Stack Developer</p>
+                
+                <div class='flex justify-center md:justify-start py-8 space-x-6'>
+                    <a href="https://instagram.com/karthi_fsd" class='hover:text-rose-400 transform hover:scale-125 transition-all duration-300'>
+                        <i data-lucide="instagram" class="w-[40px] h-[40px]"></i>
+                    </a>
+                    <a href="#" class='hover:text-blue-400 transform hover:scale-125 transition-all duration-300'>
+                        <i data-lucide="facebook" class="w-[40px] h-[40px]"></i>
+                    </a>
+                    <a href="https://github.com/Karthikeyan-BE" class='hover:text-white transform hover:scale-125 transition-all duration-300'>
+                         <i data-lucide="github" class="w-[40px] h-[40px]"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/karthikeyan-t-82b2992a7" class='hover:text-blue-600 transform hover:scale-125 transition-all duration-300'>
+                        <i data-lucide="linkedin" class="w-[40px] h-[40px]"></i>
+                    </a>
+                </div>
+                <a href="#project" class="inline-block bg-sky-500 px-6 py-3 rounded-md text-lg font-medium text-white transition-all duration-300 hover:bg-sky-600 transform hover:scale-105 shadow-lg">
+                    View My Work
+                </a>
+            </div>
+            <img class=' md:block md:w-1/3 p-5 md:rounded-full shadow-2xl shadow-sky-900/50' src="./assets/hero.png" alt="hero_png" />
+        </section>
+
+        <section class='flex flex-col md:flex-row bg-gray-800 text-white items-center py-20 px-4 fade-in-element' id='about'>
+            <div class='md:w-1/2 p-5 flex justify-center'>
+                <img src="./assets/about.png" alt="about_png" class='rounded-lg shadow-xl w-3/4' />
+            </div>
+            <div class='md:w-1/2 flex justify-center pl-5 mt-10 md:mt-0'>
+                <div class='flex flex-col justify-center max-w-lg'>
+                    <h1 class='text-4xl font-bold border-b-4 border-sky-500 w-[180px] pb-2 font-heading'>About Me</h1>
+                    <p class='py-4 text-lg text-gray-300'>
+                        I'm currently pursuing a Bachelor of Engineering in Computer Science and Engineering. Passionate about building modern web applications
+                    </p>
+                    <p class='pb-4 text-lg text-gray-300'>
+                       My technical expertise lies in full-stack web development, particularly with the MERN stack ( MongoDB, Express.js, React.js, Node.js ). I also have hands-on experience with Tailwind CSS
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        I enjoy solving real-world problems through code and continuously expanding my skill set.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 text-white bg-gray-900 fade-in-element overflow-hidden" id="skills">
+            <h1 class="text-center mb-12 text-4xl font-bold border-b-4 border-sky-500 inline-block pb-2 font-heading" 
+                style="margin-left: 50%; transform: translateX(-50%);">
+                Skills
+            </h1>
+      
+            <div id="skills-desktop-group" class="hidden md:flex justify-center min-h-[250px] items-end">
+                <div id="skills-desktop-container" class="grid justify-center">
+                    </div>
+            </div>
+      
+            <div id="skills-mobile-container" class="flex md:hidden flex-nowrap overflow-x-auto gap-4 mt-6 py-4">
+              </div>
+        </section>
+
+        <section class='flex p-5 flex-col bg-gray-800 text-white items-center justify-center py-20 px-4 fade-in-element' id='project'>
+            <div class='text-center py-5'>
+                <h1 class='text-4xl font-bold border-b-4 border-sky-500 inline-block pb-2 font-heading'>Projects</h1>
+            </div>
+            <div class='w-full pt-10'>
+                <div id="projects-desktop-grid" class='hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto [perspective:1000px]'>
+                    </div>
+                <div id="projects-mobile-container" class="flex md:hidden flex-nowrap overflow-x-auto gap-4 mt-6 py-4">
+                </div>
+            </div>
+        </section>
+
+        <section class='flex flex-col md:flex-row-reverse bg-gray-900 text-white justify-center items-center py-20 px-4 fade-in-element' id='resume'>
+            <div class='md:w-1/2 py-5 flex justify-center'>
+                <img src="./assets/resume.jpg" alt="resume_png" class='rounded-lg shadow-xl w-[300px]' />
+            </div>
+            <div class='md:w-1/2 flex justify-center pl-5 mt-10 md:mt-0'>
+                <div class='flex flex-col justify-center max-w-lg'>
+                    <h1 class='text-4xl font-bold border-b-4 border-sky-500 w-[150px] pb-2 font-heading'>Resume</h1>
+                    <p class='py-4 text-lg text-gray-300'>
+                        You can view and Download my Resume
+                    </p>
+                    <div class='pt-4'>
+                        <a href="./assets/Resume/Karthikeyan_CV.pdf" class='p-3 px-6 bg-sky-500 rounded-md text-white font-bold transition-all duration-300 hover:bg-sky-600 transform hover:scale-105 shadow-lg' download="Karthikeyan_CV.pdf">
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class='flex flex-col bg-gray-800 text-white justify-center items-center py-20 px-4 fade-in-element' id="contact">
+            <div class="bg-gray-900 p-8 md:p-12 rounded-lg shadow-xl max-w-lg w-full text-center">
+                <h1 class='text-4xl font-bold border-b-4 border-sky-500 inline-block pb-2 font-heading'>Contact</h1>
+                <p class='py-4 text-lg text-gray-300'>
+                    Feel Free to Connect With Me!
+                </p>
+                <div>
+                    <p class="text-lg">Ping Me ! ...</p>
+                    <div class="py-4 text-sky-400 text-lg flex items-center justify-center space-x-2">
+                        <i data-lucide="mail" class="w-[30px] h-[30px] inline"></i>
+                        <span>karthikeyanfsd@gmail.com</span>
+                    </div>
+                </div>
+                <div class='flex justify-center py-5 space-x-6'>
+                    <a href="https://instagram.com/karthi_fsd" class='hover:text-rose-400 transform hover:scale-125 transition-all duration-300'>
+                        <i data-lucide="instagram" class="w-[40px] h-[40px]"></i>
+                    </a>
+                    <a href="#" class='hover:text-blue-400 transform hover:scale-125 transition-all duration-300'>
+                        <i data-lucide="facebook" class="w-[40px] h-[40px]"></i>
+                    </a>
+                    <a href="https://github.com/Karthikeyan-BE" class='hover:text-white transform hover:scale-125 transition-all duration-300'>
+                        <i data-lucide="github" class="w-[40px] h-[40px]"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/karthikeyan-t-82b2992a7" class='hover:text-blue-600 transform hover:scale-125 transition-all duration-300'>
+                        <i data-lucide="linkedin" class="w-[40px] h-[40px]"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class='bg-black text-white py-8'>
+        <div class='flex justify-center py-4 space-x-6'>
+            <a href="https://instagram.com/karthi_fsd" class='text-gray-400 hover:text-rose-400 transition-colors duration-300'>
+                <i data-lucide="instagram" class="w-[24px] h-[24px]"></i>
+            </a>
+            <a href="#" class='text-gray-400 hover:text-blue-400 transition-colors duration-300'>
+                <i data-lucide="facebook" class="w-[24px] h-[24px]"></i>
+            </a>
+            <a href="httpsG://github.com/Karthikeyan-BE" class='text-gray-400 hover:text-white transition-colors duration-300'>
+                <i data-lucide="github" class="w-[24px] h-[24px]"></i>
+            </a>
+            <a href="https://linkedin.com/in/karthikeyan-t-82b2992a7" class='text-gray-400 hover:text-blue-600 transition-colors duration-300'>
+                <i data-lucide="linkedin" class="w-[24px] h-[24px]"></i>
+            </a>
+        </div>
+        <p class='text-center text-gray-500'>&copy; 2025 Karthikeyan T. All Rights Reserved</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. DATA DEFINITIONS ---
+            const skillsDetails = [
+                { id: 1, name: 'HTML 5', image: './assets/html.png' },
+                { id: 2, name: 'CSS 3', image: './assets/css.png' },
+                { id: 3, name: 'Javascript', image: './assets/js.png' },
+                { id: 4, name: 'React Js', image: './assets/react.png' },
+                { id: 5, name: 'Node JS', image: './assets/node.png' },
+                { id: 6, name: 'Express Js', image: './assets/express.png' },
+                { id: 8, name: 'Tailwind', image: './assets/tailwind.png' },
+                { id: 9, name: 'MongoDB', image: './assets/mongodb.png' }
+            ];
+
+            const projectDetails = [
+                {
+                    id:1, name:"Library Management",
+                    description:"Library Management System Using React JS , Express Js , SQL , Bootstrap ",
+                    img:"./assets/library.png", gitLink:"https://github.com/Karthikeyan-BE/LMS_SQL.git"
+                },
+                {
+                    id:2, name:"GYM Management",
+                    description:"Gym Management System Using React JS , Express Js , SQL , Bootstrap ",
+                    img:"./assets/gym.png", gitLink:""
+                },
+                {
+                    id:3, name:"Portfolio",
+                    description:"Responsive personal portfolio website using React and Tailwind CSS",
+                    img:"./assets/portfolio.png", gitLink:"https://github.com/Karthikeyan-BE/portfolio.git"
+                },
+                {
+                    id:4, name:"weather App",
+                    description:"Real time weather data using rapid weather api",
+                    img:"./assets/weather.jpeg", gitLink:"https://github.com/Karthikeyan-BE/Weather_MERN.git"
+                },
+                {
+                    id:5, name:"Todo",
+                    description:"Responsive Todo app with Login Build with Tailwind , React , Zustand , Express , MongoDB",
+                    img:"./assets/todo.jpeg", gitLink:"https://github.com/Karthikeyan-BE/Todo_Mern.git"
+                },
+            ];
+
+            // --- 2. DYNAMIC SKILLS SECTION ---
+            const skillsDesktopContainer = document.getElementById('skills-desktop-container');
+            const skillsMobileContainer = document.getElementById('skills-mobile-container');
+            const skillsDesktopGroup = document.getElementById('skills-desktop-group');
+
+            let desktopSkillsHTML = '';
+            let mobileSkillsHTML = '';
+
+            skillsDetails.forEach((skill, index) => {
+                const angle = index * 10 - 30; 
+                desktopSkillsHTML += `
+                    <div class="relative h-[160px]">
+                        <div class="absolute left-1/2 top-0 w-[120px] h-[150px] bg-white text-black font-bold border border-black rounded-md p-2 text-center transition-transform duration-500 hover:-translate-y-4"
+                             style="transform: translateX(-50%) rotate(${angle}deg); transform-origin: 50% 100%;">
+                            <img src="${skill.image}" alt="${skill.name}" class="w-full h-[100px] object-contain mb-2" />
+                            <p class="text-sm font-sans">${skill.name}</p>
+                        </div>
+                    </div>
+                `;
+
+                mobileSkillsHTML += `
+                    <div class="flex-none w-[140px] h-[160px] bg-gray-800 rounded-lg p-3 text-center transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-sky-500/30 stagger-child shadow-xl">
+                        <div class="bg-white rounded-md h-[100px] flex items-center justify-center p-2">
+                            <img src="${skill.image}" alt="${skill.name}" class="max-h-full max-w-full object-contain" />
+                        </div>
+                        <p class="text-sm font-sans text-white mt-3 font-medium">${skill.name}</p>
+                    </div>
+                `;
+            });
+
+            skillsDesktopContainer.innerHTML = desktopSkillsHTML;
+            skillsMobileContainer.innerHTML = mobileSkillsHTML + mobileSkillsHTML; // Duplicate for seamless scroll
+
+            const allSkillCards = skillsMobileContainer.children;
+            const halfSkillLength = allSkillCards.length / 2;
+            for (let i = halfSkillLength; i < allSkillCards.length; i++) {
+                allSkillCards[i].setAttribute('aria-hidden', 'true');
+                allSkillCards[i].classList.remove('stagger-child');
+            }
+
+
+            // Desktop "fan" hover logic
+            skillsDesktopGroup.addEventListener('mouseenter', () => {
+                skillsDesktopContainer.style.gridTemplateColumns = `repeat(${skillsDetails.length}, 120px)`;
+                skillsDesktopContainer.style.gap = '1rem';
+            });
+            skillsDesktopGroup.addEventListener('mouseleave', () => {
+                skillsDesktopContainer.style.gridTemplateColumns = `repeat(${skillsDetails.length}, 0)`;
+                skillsDesktopContainer.style.gap = '0';
+            });
+
+            // Mobile Skills Autoscroll Logic
+            let isSkillsPaused = false;
+            let skillsScrollInterval = null;
+            let halfSkillScrollWidth = 0; 
+
+            skillsMobileContainer.addEventListener('mouseenter', () => isSkillsPaused = true);
+            skillsMobileContainer.addEventListener('mouseleave', () => isSkillsPaused = false);
+            
+            function startSkillsScroll() {
+                if (skillsScrollInterval) return; 
+
+                skillsScrollInterval = setInterval(() => {
+                    if (halfSkillScrollWidth === 0) {
+                        halfSkillScrollWidth = skillsMobileContainer.scrollWidth / 2;
+                    }
+
+                    if (!isSkillsPaused) {
+                        if (halfSkillScrollWidth > 0 && skillsMobileContainer.scrollLeft >= halfSkillScrollWidth) {
+                            skillsMobileContainer.scrollLeft = 0; 
+                        } else if (halfSkillScrollWidth > 0) {
+                            skillsMobileContainer.scrollLeft += 1; 
+                        }
+                    }
+                }, 30);
+            }
+
+
+            // --- 3. DYNAMIC PROJECTS SECTION ---
+            const projectsDesktopGrid = document.getElementById('projects-desktop-grid');
+            const projectsMobileContainer = document.getElementById('projects-mobile-container');
+            let projectsDesktopHTML = '';
+            let projectsMobileHTML = '';
+
+            projectDetails.forEach(project => {
+                // Desktop Project Card (with 3D effects)
+                projectsDesktopHTML += `
+                    <div class='relative bg-gray-800 rounded-lg overflow-hidden shadow-lg stagger-child group 
+                                 transition-all duration-500 transform-style-preserve-3d 
+                                 md:hover:scale-105 md:hover:-rotate-y-3 md:hover:rotate-x-3'>
+                        
+                        <img src="${project.img}" alt="${project.name}" class='h-60 w-full object-cover transition-transform duration-500 md:group-hover:scale-110' />
+                        
+                        <div class='hidden md:flex absolute inset-0 flex-col justify-center items-center p-4 bg-black bg-opacity-70 text-white 
+                                    transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out'>
+                            <h3 class="text-2xl font-bold mb-2 font-heading">${project.name}</h3>
+                            <p class='text-center mb-4'>${project.description}</p>
+                            <a href="${project.gitLink || '#'}" class='bg-sky-500 rounded-md py-2 px-4 text-sm text-white font-medium transition-all duration-300 hover:bg-sky-600 transform hover:scale-105'>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                // Mobile Project Card (simple design for carousel)
+                projectsMobileHTML += `
+                    <div class="flex-none w-[280px] bg-gray-800 rounded-lg overflow-hidden shadow-xl stagger-child transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-sky-500/30">
+                        <img src="${project.img}" alt="${project.name}" class="w-full h-40 object-cover" />
+                        <div class="p-4 text-white">
+                            <h3 class="text-xl font-bold mb-2 font-heading">${project.name}</h3>
+                            <p class="text-sm text-gray-300 mb-4 h-20 overflow-y-auto">${project.description}</p>
+                            <a href="${project.gitLink || '#'}" class="inline-block bg-sky-500 rounded-md py-2 px-4 text-sm text-white font-medium transition-all duration-300 hover:bg-sky-600 transform hover:scale-105">
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            projectsDesktopGrid.innerHTML = projectsDesktopHTML;
+            projectsMobileContainer.innerHTML = projectsMobileHTML + projectsMobileHTML; // Duplicate for seamless scroll
+
+            const allProjectCards = projectsMobileContainer.children;
+            const halfProjectLength = allProjectCards.length / 2;
+            for (let i = halfProjectLength; i < allProjectCards.length; i++) {
+                allProjectCards[i].setAttribute('aria-hidden', 'true');
+                allProjectCards[i].classList.remove('stagger-child');
+            }
+
+            // Mobile Projects Autoscroll Logic
+            let isProjectsPaused = false;
+            let projectsScrollInterval = null;
+            let halfProjectScrollWidth = 0; 
+
+            projectsMobileContainer.addEventListener('mouseenter', () => isProjectsPaused = true);
+            projectsMobileContainer.addEventListener('mouseleave', () => isProjectsPaused = false);
+            
+            function startProjectsScroll() {
+                if (projectsScrollInterval) return; 
+
+                projectsScrollInterval = setInterval(() => {
+                    if (halfProjectScrollWidth === 0) {
+                        halfProjectScrollWidth = projectsMobileContainer.scrollWidth / 2;
+                    }
+
+                    if (!isProjectsPaused) {
+                        if (halfProjectScrollWidth > 0 && projectsMobileContainer.scrollLeft >= halfProjectScrollWidth) {
+                            projectsMobileContainer.scrollLeft = 0; 
+                        } else if (halfProjectScrollWidth > 0) {
+                            projectsMobileContainer.scrollLeft += 1; 
+                        }
+                    }
+                }, 40); // Slightly slower scroll for projects
+            }
+
+
+            // --- 4. MOBILE MENU LOGIC ---
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('-translate-x-full');
+                mobileMenu.classList.toggle('translate-x-0');
+                menuIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('-translate-x-full');
+                    mobileMenu.classList.remove('translate-x-0');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+
+            // --- 5. SCROLL-REVEAL ANIMATION LOGIC ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        
+                        // Start skills scroll when skills section is visible
+                        if (entry.target.id === 'skills') {
+                            startSkillsScroll();
+                        }
+                        // Start projects scroll when project section is visible
+                        if (entry.target.id === 'project') {
+                            startProjectsScroll();
+                        }
+
+                        const children = entry.target.querySelectorAll('.stagger-child');
+                        children.forEach((child, index) => {
+                            child.style.transitionDelay = `${index * 100}ms`; // 100ms delay
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+
+            const elementsToFadeIn = document.querySelectorAll('.fade-in-element');
+            elementsToFadeIn.forEach(el => observer.observe(el));
+        
+        }); // End of DOMContentLoaded
+    </script>
+    
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>
