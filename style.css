@@ -1,0 +1,82 @@
+/* style.css */
+
+/*
+ * Fallback CSS variables.
+ * These will be OVERWRITTEN by the theme.js and inline script,
+ * but they provide a sensible default if JavaScript fails.
+*/
+:root {
+  --color-primary: #0ea5e9;
+  --color-accent: #0284c7;
+  --color-background: #030712;
+  --color-backgroundLight: #1f2937;
+}
+
+/* Apply the custom fonts (from index.html <head>) */
+body {
+  font-family: "Inter", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Scroll-reveal animation */
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-element.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered child animation */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.is-visible .stagger-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar using theme colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-backgroundLight);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Skills Fan: Initial (unhovered) state */
+#skills-desktop-container {
+  grid-template-columns: repeat(8, 0);
+  gap: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Hide scrollbar for mobile skill/project containers */
+#skills-mobile-container::-webkit-scrollbar,
+#projects-mobile-container::-webkit-scrollbar {
+  display: none;
+}
+#skills-mobile-container,
+#projects-mobile-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
