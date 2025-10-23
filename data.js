@@ -17,9 +17,9 @@ export const portfolioData = {
    */
   links: {
     instagram: "https://instagram.com/eye_killer_and_love_hacker",
-    facebook: "Thanigaiktm", // Use "#" if you don't have a link
+    facebook: "https://www.facebook.com/share/17WqMKursi/", // Use "#" if you don't have a link
     github: "https://github.com/thanigaimalai772",
-    linkedin: "https://linkedin.com/in/karthikeyan-t-82b2992a7",
+    linkedin: "https://www.linkedin.com/in/thanigaimalai-sk-725376359",
   },
 
   /**
