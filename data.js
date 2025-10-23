@@ -16,9 +16,9 @@ export const portfolioData = {
    * Social media and professional links.
    */
   links: {
-    instagram: "https://instagram.com/karthi_fsd",
-    facebook: "#", // Use "#" if you don't have a link
-    github: "https://github.com/Karthikeyan-BE",
+    instagram: "https://instagram.com/eye_killer_and_love_hacker",
+    facebook: "Thanigaiktm", // Use "#" if you don't have a link
+    github: "https://github.com/thanigaimalai772",
     linkedin: "https://linkedin.com/in/karthikeyan-t-82b2992a7",
   },
 
@@ -29,8 +29,8 @@ export const portfolioData = {
     hero: "./assets/hero.png",
     about: "./assets/about.png",
     resumeImg: "./assets/resume.jpg",
-    resumePdf: "./assets/Resume/Karthikeyan_CV.pdf",
-    resumeDownloadName: "Karthikeyan_CV.pdf",
+    resumePdf: "./assets/Resume/_CV.pdf",
+    resumeDownloadName: "Thanigaimalai_CV.pdf",
   },
 
   /**
